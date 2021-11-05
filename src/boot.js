@@ -30,6 +30,22 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
-    this.scene.start('level');
+    let width = this.cameras.main.width;
+    let height = this.cameras.main.height;
+    let assetText = this.make.text({
+      x: width / 2,
+      y: height / 2 + 80,
+      text: '',
+      style: {
+        font: '18px caveat',
+        fill: '#ffffff'
+      }
+    });
+    assetText.setOrigin(0.5, 0.5);
+    assetText.setText('Assets cargados !!!');
+    setTimeout(()=>{
+      this.scene.start('level');
+    }, 5000);
+    
   }
 }
