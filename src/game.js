@@ -2,7 +2,19 @@ import Boot from './boot.js';
 import End from './end.js';
 import Platform from './platform.js';
 import Level from './scene.js';
+import {Mensaje} from './mensaje.js';
 
+
+let GAME = null;
+
+const languageEl = document.getElementById('language');
+languageEl.addEventListener('change', (event) => {
+    Mensaje.language = event.target.value;
+    GAME.events.on('destroy', _ => {
+        initGame();
+    })
+    GAME.destroy(true);
+});
 
 const initGame = () => {
     /**
@@ -25,10 +37,11 @@ const initGame = () => {
                 gravity: { y: 400 }, 
                 debug: false 
             } 
-        }
+        },
+        parent: 'game'
     };
 
-    new Phaser.Game(config);
+    GAME = new Phaser.Game(config);
 
 }
 

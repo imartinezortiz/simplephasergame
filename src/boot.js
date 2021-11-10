@@ -1,3 +1,5 @@
+import t, {Mensaje} from './mensaje.js'
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una 
@@ -18,11 +20,12 @@ export default class Boot extends Phaser.Scene {
    */
   preload() {
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
-    this.load.setPath('assets/sprites/');
-    this.load.image('platform', 'platform.png');
-    this.load.image('base', 'base.png');
-    this.load.image('star', 'star.png');
-    this.load.image('player', 'player.png');
+    this.load.setPath('assets/');
+    this.load.image('platform', 'sprites/platform.png');
+    this.load.image('base', 'sprites/base.png');
+    this.load.image('star', 'sprites/star.png');
+    this.load.image('player', 'sprites/player.png');
+    this.load.json('mensajes', 'mensajes.json')
   }
 
   /**
@@ -30,6 +33,7 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
+    Mensaje.cargaMensajes(this.cache.json.get('mensajes'));
     let width = this.cameras.main.width;
     let height = this.cameras.main.height;
     let assetText = this.make.text({
@@ -42,7 +46,8 @@ export default class Boot extends Phaser.Scene {
       }
     });
     assetText.setOrigin(0.5, 0.5);
-    assetText.setText('Assets cargados !!!');
+    let text = t('assets_loaded');
+    assetText.setText(text);
     setTimeout(()=>{
       this.scene.start('level');
     }, 5000);
