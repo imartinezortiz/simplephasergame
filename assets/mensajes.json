@@ -1,0 +1,16 @@
+[
+    {
+        "key": "assets_loaded",
+        "translations" : {
+            "en" : "Assets loaded !",
+            "es" : "Recursos cargados !"
+        }
+    },
+    {
+        "key": "score",
+        "translations" : {
+            "en" : "Score",
+            "es" : "Puntos"
+        }
+    }
+]

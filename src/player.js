@@ -1,4 +1,6 @@
 import Star from './star.js';
+import t from './mensaje.js';
+
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
@@ -39,7 +41,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
    * Actualiza la UI con la puntuación actual
    */
   updateScore() {
-    this.label.text = 'Score: ' + this.score;
+    let text = t('score');
+    this.label.text = `${text}: ${this.score}`;
   }
 
   /**
