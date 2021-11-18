@@ -16,6 +16,12 @@ languageEl.addEventListener('change', (event) => {
     GAME.destroy(true);
 });
 
+const sceneFactory = (params, sceneClass) => {
+    return function() {
+        return new sceneClass(params)
+    }
+}
+
 const initGame = () => {
     /**
      * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -30,7 +36,7 @@ const initGame = () => {
             autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
         },
         pixelArt: true,
-        scene: [Boot, Level, End],
+        scene: [sceneFactory({"hola":"mundo"}, Boot), Level, End],
         physics: { 
             default: 'arcade', 
             arcade: { 
@@ -42,7 +48,7 @@ const initGame = () => {
     };
 
     GAME = new Phaser.Game(config);
-
+    console.dir(GAME.scene.scenes[0])
 }
 
 const WebFontConfig = {

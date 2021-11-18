@@ -11,8 +11,9 @@ export default class Boot extends Phaser.Scene {
   /**
    * Constructor de la escena
    */
-  constructor() {
+  constructor(params) {
     super({ key: 'boot' });
+    this.otrosParams = params;
   }
 
   /**
