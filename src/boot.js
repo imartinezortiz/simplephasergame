@@ -16,6 +16,13 @@ export default class Boot extends Phaser.Scene {
     this.otrosParams = params;
   }
 
+  init() {
+    this.game.estadoCompartido = {
+      inventario : [],
+      numEstrellas: 0
+    };
+  }
+
   /**
    * Carga de los assets del juego
    */

@@ -15,7 +15,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
    */
   constructor(scene, x, y) {
     super(scene, x, y, 'player');
-    this.score = 0;
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     // Queremos que el jugador no se salga de los límites del mundo
@@ -33,7 +32,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
    * actualiza la UI con la puntuación actual.
    */
   point() {
-    this.score++;
     this.updateScore();
   }
   
@@ -42,7 +40,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
    */
   updateScore() {
     let text = t('score');
-    this.label.text = `${text}: ${this.score}`;
+    this.label.text = `${text}: ${this.scene.game.estadoCompartido.numEstrellas}`;
   }
 
   /**
